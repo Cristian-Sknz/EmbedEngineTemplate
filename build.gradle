@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+group 'me.skiincraft'
+version '1.0-SNAPSHOT'
+
+compileJava.options.encoding('UTF-8')
+tasks.withType(JavaCompile) {
+    options.encoding('UTF-8')
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compileOnly(group: 'net.dv8tion', name: 'JDA', version: '4.2.0_168')
+    implementation(group: 'org.freemarker', name: 'freemarker', version: '2.3.30')
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+test {
+    useJUnitPlatform()
+}
+
