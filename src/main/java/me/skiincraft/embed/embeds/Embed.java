@@ -1,11 +1,14 @@
 package me.skiincraft.embed.embeds;
 
+import me.skiincraft.embed.adapter.CustomCollapsedStringAdapter;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @XmlRootElement(name = "Embed")
-@XmlType(propOrder = { "title", "description", "url", "color", "author", "fields", "images" })
+@XmlType(propOrder = { "title", "description", "url", "color", "author", "fields", "images", "footer" })
 public class Embed {
 
     private String title;
@@ -46,6 +49,7 @@ public class Embed {
     }
 
     @XmlElement(name= "Description")
+    @XmlJavaTypeAdapter(CustomCollapsedStringAdapter.class)
     public Embed setDescription(String description) {
         this.description = description;
         return this;

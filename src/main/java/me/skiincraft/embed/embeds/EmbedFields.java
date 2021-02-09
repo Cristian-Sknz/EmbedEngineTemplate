@@ -1,10 +1,12 @@
 package me.skiincraft.embed.embeds;
 
+import me.skiincraft.embed.adapter.CustomCollapsedStringAdapter;
 import org.jetbrains.annotations.NotNull;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -76,6 +78,7 @@ public class EmbedFields implements Iterable<EmbedFields.EmbedField>{
         }
 
         @XmlElement(name = "Value")
+        @XmlJavaTypeAdapter(CustomCollapsedStringAdapter.class)
         public EmbedField setValue(String value) {
             this.value = value;
             return this;

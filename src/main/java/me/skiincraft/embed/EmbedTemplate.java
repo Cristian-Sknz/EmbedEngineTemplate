@@ -16,7 +16,9 @@ public class EmbedTemplate {
         this.cfg.setDefaultEncoding("UTF-8");
         try {
             this.xml = JAXBContext.newInstance(Embed.class);
-        } catch (Exception ignored){}
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public Configuration getConfiguration(){

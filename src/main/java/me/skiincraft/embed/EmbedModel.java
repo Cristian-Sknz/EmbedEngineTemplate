@@ -3,6 +3,7 @@ package me.skiincraft.embed;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import me.skiincraft.embed.adapter.BooleanAdapter;
+import me.skiincraft.embed.adapter.CustomCollapsedStringAdapter;
 import me.skiincraft.embed.embeds.Embed;
 import me.skiincraft.embed.embeds.EmbedFields;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -69,6 +70,7 @@ public class EmbedModel {
         template.process(properties, writer);
         Unmarshaller marshaller = EmbedTemplate.getInstance().getJAXBContent().createUnmarshaller();
         marshaller.setAdapter(BooleanAdapter.INSTANCE);
+        marshaller.setAdapter(new CustomCollapsedStringAdapter());
         return (Embed) marshaller.unmarshal(new ByteArrayInputStream(writer.toString().getBytes(StandardCharsets.UTF_8)));
     }
 
